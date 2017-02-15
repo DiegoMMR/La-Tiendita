@@ -7,7 +7,7 @@ package la.tiendita;
 
 /**
  *
- * @author dieez
+ * @author 
  */
 public class LaTiendita {
 
@@ -16,6 +16,7 @@ public class LaTiendita {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+      
     }
     
 }
