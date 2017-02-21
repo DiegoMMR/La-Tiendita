@@ -5,6 +5,8 @@
  */
 package la.tiendita;
 
+import javax.swing.*;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -39,7 +41,7 @@ public class Pago extends javax.swing.JFrame {
         txtCliente = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         opCheque = new javax.swing.JRadioButton();
-        btnAceptar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         opCredito = new javax.swing.JRadioButton();
         opEfectivo = new javax.swing.JRadioButton();
         txtFecha = new com.toedter.calendar.JDateChooser();
@@ -54,6 +56,7 @@ public class Pago extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtTotalPagar1 = new javax.swing.JTextField();
+        btnAceptar1 = new javax.swing.JButton();
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Factura");
@@ -85,10 +88,10 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -136,6 +139,13 @@ public class Pago extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Q.");
+
+        btnAceptar1.setText("Aceptar");
+        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,12 +198,20 @@ public class Pago extends javax.swing.JFrame {
                                 .addGap(280, 280, 280)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAceptar)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel8)))
                 .addContainerGap(80, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(366, Short.MAX_VALUE)
+                    .addComponent(btnAceptar1)
+                    .addGap(70, 70, 70)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,9 +255,14 @@ public class Pago extends javax.swing.JFrame {
                     .addComponent(opEfectivo)
                     .addComponent(opCheque)
                     .addComponent(opCredito))
-                .addGap(15, 15, 15)
-                .addComponent(btnAceptar)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(461, Short.MAX_VALUE)
+                    .addComponent(btnAceptar1)
+                    .addGap(12, 12, 12)))
         );
 
         pack();
@@ -249,11 +272,16 @@ public class Pago extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_opChequeActionPerformed
 
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
+    private JFrame frame;
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
        
+         frame = new JFrame("Salir");
+        if(JOptionPane.showConfirmDialog(frame,"Desea salir?","La Tiendita",
+                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+       System.exit(0);
+    }
         
-    }//GEN-LAST:event_btnAceptarActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void opCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opCreditoActionPerformed
         // TODO add your handling code here:
@@ -274,6 +302,10 @@ public class Pago extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,7 +344,8 @@ public class Pago extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup FormaDePago;
-    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar1;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
