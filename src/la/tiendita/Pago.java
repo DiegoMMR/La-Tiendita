@@ -98,6 +98,7 @@ public class Pago extends javax.swing.JFrame {
         jRadioEfectivo = new javax.swing.JRadioButton();
         jRadioCheque = new javax.swing.JRadioButton();
         jRadioCredito = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Factura");
@@ -208,6 +209,13 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cerrar Caja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -273,6 +281,10 @@ public class Pago extends javax.swing.JFrame {
                                         .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +333,9 @@ public class Pago extends javax.swing.JFrame {
                     .addComponent(btnResetear)
                     .addComponent(btnAceptar1)
                     .addComponent(btnSalir))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -403,6 +417,12 @@ public class Pago extends javax.swing.JFrame {
        
     }//GEN-LAST:event_txtTotalPagarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Cierre c = new Cierre();
+        c.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,6 +463,7 @@ public class Pago extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnResetear;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
