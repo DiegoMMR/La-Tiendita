@@ -5,6 +5,7 @@
  */
 package la.tiendita;
 
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -16,6 +17,43 @@ import javax.swing.UIManager;
  */
 public class Pago extends javax.swing.JFrame {
 
+    //Listas con los datos de la factura dependiendo del metodo de pago
+    ArrayList<Factura> facturaEfectivo = new ArrayList<Factura>();
+    ArrayList<Factura> facturaCheque = new ArrayList<Factura>();
+    ArrayList<Factura> facturaCredito = new ArrayList<Factura>();
+    
+    //Envia los datos a la lista de efectivo
+    public void DatosAEfectivo(){
+        facturaEfectivo.add(new Factura(txtNombreProducto.getText(), 
+                Integer.parseInt(txtCantidad.getText()),
+                Float.parseFloat(txtPrecioIndividual.getText()),
+                txtCliente.getText(),
+                txtNit.getText(),
+                Float.parseFloat(txtTotalPagar.getText())
+        ));
+    }
+    
+    //Envia los datos a la lista de credito
+    public void DatosACredito(){
+        facturaCredito.add(new Factura(txtNombreProducto.getText(), 
+                Integer.parseInt(txtCantidad.getText()),
+                Float.parseFloat(txtPrecioIndividual.getText()),
+                txtCliente.getText(),
+                txtNit.getText(),
+                Float.parseFloat(txtTotalPagar.getText())
+        ));
+    }
+    
+    //Envia los datos a la lista de efectivo Cheque
+    public void DatosACheque(){
+        facturaCheque.add(new Factura(txtNombreProducto.getText(), 
+                Integer.parseInt(txtCantidad.getText()),
+                Float.parseFloat(txtPrecioIndividual.getText()),
+                txtCliente.getText(),
+                txtNit.getText(),
+                Float.parseFloat(txtTotalPagar.getText())
+        ));
+    }
     /**
      * Creates new form Pago
      */
@@ -35,6 +73,7 @@ public class Pago extends javax.swing.JFrame {
     private void initComponents() {
 
         FormaDePago = new javax.swing.ButtonGroup();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -53,7 +92,7 @@ public class Pago extends javax.swing.JFrame {
         txtCantidad = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtTotalPagar1 = new javax.swing.JTextField();
+        txtPrecioIndividual = new javax.swing.JTextField();
         btnAceptar1 = new javax.swing.JButton();
         btnResetear = new javax.swing.JButton();
         jRadioEfectivo = new javax.swing.JRadioButton();
@@ -63,13 +102,13 @@ public class Pago extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Factura");
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Nombre del Cliente");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Total a pagar");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Nit");
 
         txtCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -79,7 +118,7 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Fecha");
 
         btnSalir.setText("Salir");
@@ -100,8 +139,10 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Nombre del producto: ");
 
+        txtTotalPagar.setText("0");
         txtTotalPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalPagarActionPerformed(evt);
@@ -110,19 +151,23 @@ public class Pago extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccione forma de pago: ");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Cantidad:");
 
+        txtCantidad.setText("0");
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Precio Individual: ");
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText("Q.");
+
+        txtPrecioIndividual.setText("0");
 
         btnAceptar1.setText("Aceptar");
         btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +183,8 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        jRadioEfectivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jRadioEfectivo.setSelected(true);
         jRadioEfectivo.setText("Efectivo");
         jRadioEfectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +192,7 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        jRadioCheque.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jRadioCheque.setText("Cheque*");
         jRadioCheque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +200,7 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        jRadioCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jRadioCredito.setText("Crédito");
         jRadioCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,65 +213,66 @@ public class Pago extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel9)
-                                                .addGap(138, 138, 138)
-                                                .addComponent(jLabel11))
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel13)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(txtTotalPagar1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtCliente)
-                                                    .addComponent(txtNit, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                                    .addComponent(txtTotalPagar)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jRadioEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel2))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioCheque))
-                                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jRadioCredito)))))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(280, 280, 280)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jRadioEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioCheque))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(70, 70, 70)
+                                .addComponent(jRadioCredito)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addComponent(jLabel8)))
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(368, Short.MAX_VALUE)
-                    .addComponent(btnAceptar1)
-                    .addGap(70, 70, 70)))
+                        .addComponent(jLabel8))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +294,7 @@ public class Pago extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalPagar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -257,25 +307,21 @@ public class Pago extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
                 .addComponent(jLabel2)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioEfectivo)
                     .addComponent(jRadioCheque)
                     .addComponent(jRadioCredito))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnResetear))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(461, Short.MAX_VALUE)
+                    .addComponent(btnResetear)
                     .addComponent(btnAceptar1)
-                    .addGap(12, 12, 12)))
+                    .addComponent(btnSalir))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -306,23 +352,29 @@ public class Pago extends javax.swing.JFrame {
 
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
         // TODO add your handling code here:
+        if (jRadioEfectivo.isSelected()){DatosAEfectivo();}
+        else if (jRadioCredito.isSelected()){DatosACredito();}
+        else if (jRadioCheque.isSelected()){DatosACheque();} 
+        limpiarCasillas();
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
-    private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
-        
-      //Los valores ingresaron serán reseteados para poder ingresar una nueva orden
+    private void limpiarCasillas(){
+        //Los valores ingresaron serán reseteados para poder ingresar una nueva orden
         
         txtNombreProducto.setText(null);
         txtFecha.setDate(null);
-        txtCantidad.setText(null);
-        txtTotalPagar1.setText(null);
+        txtCantidad.setText("0");
+        txtPrecioIndividual.setText("0");
         txtCliente.setText(null);
-        txtNit.setText(null);
-        txtTotalPagar.setText(null);        
+        txtNit.setText("C/F");
+        txtTotalPagar.setText("0");        
         jRadioCheque.setSelected(false);
         jRadioCredito.setSelected(false);
-        jRadioEfectivo.setSelected(false);
-        
+        jRadioEfectivo.setSelected(true);
+    }
+    
+    private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
+           limpiarCasillas();
     }//GEN-LAST:event_btnResetearActionPerformed
 
     private void jRadioEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioEfectivoActionPerformed
@@ -405,12 +457,13 @@ public class Pago extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioCheque;
     private javax.swing.JRadioButton jRadioCredito;
     private javax.swing.JRadioButton jRadioEfectivo;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombreProducto;
+    private javax.swing.JTextField txtPrecioIndividual;
     private javax.swing.JTextField txtTotalPagar;
-    private javax.swing.JTextField txtTotalPagar1;
     // End of variables declaration//GEN-END:variables
 }
