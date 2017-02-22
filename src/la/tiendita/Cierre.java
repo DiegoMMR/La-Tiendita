@@ -1,5 +1,8 @@
 package la.tiendita;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,6 +22,47 @@ public class Cierre extends javax.swing.JFrame {
         initComponents();
         //Coloca la Aplicacion al centro de la pantalla
         this.setLocationRelativeTo(null);
+        
+        //Cargar datos de arrayLists en la JTable
+        DefaultTableModel modelEfectivo = new DefaultTableModel();
+        modelEfectivo.setColumnIdentifiers(new String[] {"Nombre del Producto", 
+            "Cantidad", "Precio Individual", "Nombre del cliente", "Nit", 
+            "Total a pagar"});
+        DefaultTableModel modelCheque = new DefaultTableModel();
+        modelCheque.setColumnIdentifiers(new String[] {"Nombre del Producto", 
+            "Cantidad", "Precio Individual", "Nombre del cliente", "Nit", 
+            "Total a pagar"});
+        DefaultTableModel modelCredito = new DefaultTableModel();
+        modelCredito.setColumnIdentifiers(new String[] {"Nombre del Producto", 
+            "Cantidad", "Precio Individual", "Nombre del cliente", "Nit", 
+            "Total a pagar"});
+        jTableEfectivo.setModel(modelEfectivo);
+        jTableCheque.setModel(modelCheque);
+        jTableCredito.setModel(modelCredito);
+        
+        // Llenar la JTable (TableModel) con la data de; ArrayList facturaEfectivo
+        for (Factura f : Pago.facturaEfectivo)
+        {
+            modelEfectivo.addRow(new String[] {f.getNombreProducto(), 
+            Integer.toString(f.getCantidad()), Float.toString(f.getPrecioIndividual()),
+            f.getNombreCliente(), f.getNit(),Float.toString(f.getTotalVenta())});
+        }
+        
+        // Llenar la JTable (TableModel) con la data de; ArrayList facturaCheque
+        for (Factura f : Pago.facturaCheque)
+        {
+            modelCheque.addRow(new String[] {f.getNombreProducto(), 
+            Integer.toString(f.getCantidad()), Float.toString(f.getPrecioIndividual()),
+            f.getNombreCliente(), f.getNit(),Float.toString(f.getTotalVenta())});
+        }
+        
+        // Llenar la JTable (TableModel) con la data de; ArrayList facturaCredito
+        for (Factura f : Pago.facturaCredito)
+        {
+            modelCredito.addRow(new String[] {f.getNombreProducto(), 
+            Integer.toString(f.getCantidad()), Float.toString(f.getPrecioIndividual()),
+            f.getNombreCliente(), f.getNit(),Float.toString(f.getTotalVenta())});
+        }
     }
 
     /**
@@ -30,24 +74,16 @@ public class Cierre extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtTabla = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
-
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        txtTabla.setViewportView(jTable);
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        txtTabla = new javax.swing.JScrollPane();
+        jTableEfectivo = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCheque = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCredito = new javax.swing.JTable();
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Cierre de caja");
@@ -58,24 +94,70 @@ public class Cierre extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblTotal.setText("Q.");
 
+        jTableEfectivo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        txtTabla.setViewportView(jTableEfectivo);
+
+        jTabbedPane1.addTab("Efectivo", txtTabla);
+
+        jTableCheque.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableCheque);
+
+        jTabbedPane1.addTab("Cheque", jScrollPane1);
+
+        jTableCredito.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableCredito);
+
+        jTabbedPane1.addTab("Credito", jScrollPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(lblTotal)
                 .addGap(136, 136, 136))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(jLabel8))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,8 +165,8 @@ public class Cierre extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
-                .addComponent(txtTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,7 +214,12 @@ public class Cierre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTable jTable;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTableCheque;
+    private javax.swing.JTable jTableCredito;
+    private javax.swing.JTable jTableEfectivo;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JScrollPane txtTabla;
     // End of variables declaration//GEN-END:variables

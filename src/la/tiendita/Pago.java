@@ -18,9 +18,9 @@ import javax.swing.UIManager;
 public class Pago extends javax.swing.JFrame {
 
     //Listas con los datos de la factura dependiendo del metodo de pago
-    ArrayList<Factura> facturaEfectivo = new ArrayList<Factura>();
-    ArrayList<Factura> facturaCheque = new ArrayList<Factura>();
-    ArrayList<Factura> facturaCredito = new ArrayList<Factura>();
+    static ArrayList<Factura> facturaEfectivo = new ArrayList<Factura>();
+    static ArrayList<Factura> facturaCheque = new ArrayList<Factura>();
+    static ArrayList<Factura> facturaCredito = new ArrayList<Factura>();
     
     //Envia los datos a la lista de efectivo
     public void DatosAEfectivo(){
@@ -382,9 +382,6 @@ public class Pago extends javax.swing.JFrame {
         txtCliente.setText(null);
         txtNit.setText("C/F");
         txtTotalPagar.setText("0");        
-        jRadioCheque.setSelected(false);
-        jRadioCredito.setSelected(false);
-        jRadioEfectivo.setSelected(true);
     }
     
     private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
