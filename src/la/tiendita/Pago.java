@@ -102,9 +102,6 @@ public class Pago extends javax.swing.JFrame {
         jRadioCheque = new javax.swing.JRadioButton();
         jRadioCredito = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
-<<<<<<< HEAD
-        jButton2 = new javax.swing.JButton();
-=======
         txtTotalPagar = new javax.swing.JTextField();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -123,7 +120,6 @@ public class Pago extends javax.swing.JFrame {
                 formKeyReleased(evt);
             }
         });
->>>>>>> origin/master
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Factura");
@@ -168,22 +164,6 @@ public class Pago extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Nombre del producto: ");
 
-<<<<<<< HEAD
-        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProductoActionPerformed(evt);
-            }
-        });
-
-        txtTotalPagar.setText("0");
-        txtTotalPagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalPagarActionPerformed(evt);
-            }
-        });
-
-=======
->>>>>>> origin/master
         jLabel2.setText("Seleccione forma de pago: ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -236,7 +216,7 @@ public class Pago extends javax.swing.JFrame {
         });
 
         jRadioCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jRadioCredito.setText("Crédito");
+        jRadioCredito.setText("Credito");
         jRadioCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioCreditoActionPerformed(evt);
@@ -250,18 +230,10 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        jButton2.setText("Encender");
-        jButton2.setActionCommand("Encender");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-=======
         txtTotalPagar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtTotalPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalPagarActionPerformed(evt);
->>>>>>> origin/master
             }
         });
 
@@ -297,12 +269,9 @@ public class Pago extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(70, 70, 70)
                                 .addComponent(jRadioCredito))))
-<<<<<<< HEAD
-=======
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel8))
->>>>>>> origin/master
                     .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,23 +292,12 @@ public class Pago extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(64, Short.MAX_VALUE))
-<<<<<<< HEAD
-            .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(37, 37, 37))
-=======
->>>>>>> origin/master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jButton2))
+                .addComponent(jLabel8)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,7 +409,7 @@ public class Pago extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void limpiarCasillas(){
-        //Los valores ingresaron serán reseteados para poder ingresar una nueva orden
+        //Los valores ingresaron ser�n reseteados para poder ingresar una nueva orden
         
         txtNombreProducto.setText(null);
         txtFecha.setDate(null);
@@ -493,63 +451,6 @@ public class Pago extends javax.swing.JFrame {
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< HEAD
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      if (jButton2.getText() == "Encender")
-      {
-      txtFecha.setEnabled(true);
-      txtNombreProducto.setEnabled(true);
-      txtCantidad.setEnabled(true);
-      txtPrecioIndividual.setEnabled(true);
-      txtCliente.setEnabled(true);
-      txtNit.setEnabled(true);
-      txtTotalPagar.setEnabled(true);
-      jRadioEfectivo.setEnabled(true);
-      jRadioCheque.setEnabled(true);
-      jRadioCredito.setEnabled(true);
-      btnResetear.setEnabled(true);
-      btnAceptar1.setEnabled(true);
-      btnSalir.setEnabled(true);
-      JOptionPane.showMessageDialog(null,"La Caja Esta Encendida");
-      jButton2.setText("Apagar");
-      
-      }
-      else
-      {
-          if(JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea cancelar la venta \n y salir de la caja","Saliendo",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION)
-          {
-          txtFecha.setEnabled(false);
-      txtNombreProducto.setEnabled(false);
-      txtCantidad.setEnabled(false);
-      txtPrecioIndividual.setEnabled(false);
-      txtCliente.setEnabled(false);
-      txtNit.setEnabled(false);
-      txtTotalPagar.setEnabled(false);
-      jRadioEfectivo.setEnabled(false);
-      jRadioCheque.setEnabled(false);
-      jRadioCredito.setEnabled(false);
-      btnResetear.setEnabled(false);
-      btnAceptar1.setEnabled(false);
-      btnSalir.setEnabled(false);
-     
-      jButton2.setText("Encender");
-          
-          
-          }
-      
-      
-      
-      
-      }
-        
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreProductoActionPerformed
-=======
     private void txtTotalPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPagarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalPagarActionPerformed
@@ -565,7 +466,6 @@ public class Pago extends javax.swing.JFrame {
     private void formInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formInputMethodTextChanged
       
     }//GEN-LAST:event_formInputMethodTextChanged
->>>>>>> origin/master
 
     /**
      * @param args the command line arguments
@@ -608,7 +508,6 @@ public class Pago extends javax.swing.JFrame {
     private javax.swing.JButton btnResetear;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
