@@ -5,6 +5,8 @@
  */
 package la.tiendita;
 
+import java.awt.event.KeyEvent;
+import src.Factura;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.JOptionPane;
@@ -61,6 +63,8 @@ public class Pago extends javax.swing.JFrame {
         initComponents();
         //Coloca la Aplicacion al centro de la pantalla
         this.setLocationRelativeTo(null);
+        
+       
     }
 
     /**
@@ -86,7 +90,6 @@ public class Pago extends javax.swing.JFrame {
         txtNit = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtNombreProducto = new javax.swing.JTextField();
-        txtTotalPagar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
@@ -99,6 +102,24 @@ public class Pago extends javax.swing.JFrame {
         jRadioCheque = new javax.swing.JRadioButton();
         jRadioCredito = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
+        txtTotalPagar = new javax.swing.JTextField();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                formInputMethodTextChanged(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Factura");
@@ -142,13 +163,6 @@ public class Pago extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Nombre del producto: ");
-
-        txtTotalPagar.setText("0");
-        txtTotalPagar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalPagarActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Seleccione forma de pago: ");
 
@@ -194,7 +208,7 @@ public class Pago extends javax.swing.JFrame {
         });
 
         jRadioCheque.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jRadioCheque.setText("Cheque*");
+        jRadioCheque.setText("Cheque");
         jRadioCheque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioChequeActionPerformed(evt);
@@ -216,58 +230,51 @@ public class Pago extends javax.swing.JFrame {
             }
         });
 
+        txtTotalPagar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTotalPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPagarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(137, 137, 137)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel9)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel12))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jRadioEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jRadioCheque))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAceptar1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel10)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(70, 70, 70)
-                                .addComponent(jRadioCredito)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jRadioCredito))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel8))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addGap(18, 18, 18)
@@ -279,12 +286,12 @@ public class Pago extends javax.swing.JFrame {
                                         .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(64, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,12 +371,41 @@ public class Pago extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
 
+    
+    
+     
+
     private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
-        // TODO add your handling code here:
-        if (jRadioEfectivo.isSelected()){DatosAEfectivo();}
-        else if (jRadioCredito.isSelected()){DatosACredito();}
-        else if (jRadioCheque.isSelected()){DatosACheque();} 
-        limpiarCasillas();
+        
+        
+        try {
+
+        
+            if (txtFecha.getDate() == null || txtNombreProducto.getText().length() == 0 || txtNit.getText().length() == 0) {
+                
+                JOptionPane.showMessageDialog(null, "Algun campo esta vacio");
+
+            } else if ("0".equals(txtCantidad.getText()) || "0".equals(txtPrecioIndividual.getText()) ) {
+                
+                JOptionPane.showMessageDialog(null, "Falta indicar la Cantidad o el precio");
+                
+            } else {
+                
+                int cantidad = Integer.parseInt(txtCantidad.getText());
+                
+                //dependiendo de que tipo de pago sea alli es donde se guardan los datos
+                if (jRadioEfectivo.isSelected()) {
+                    DatosAEfectivo();
+                } else if (jRadioCredito.isSelected()) {DatosACredito();
+                } else if (jRadioCheque.isSelected()) {DatosACheque();
+                }
+                limpiarCasillas();
+
+            }
+        
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Algun dato es invalido Error: " + e.getMessage());
+        } 
     }//GEN-LAST:event_btnAceptar1ActionPerformed
 
     private void limpiarCasillas(){
@@ -409,16 +445,27 @@ public class Pago extends javax.swing.JFrame {
            jRadioEfectivo.setSelected(false);
     }//GEN-LAST:event_jRadioCreditoActionPerformed
 
-    private void txtTotalPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPagarActionPerformed
-        
-       
-    }//GEN-LAST:event_txtTotalPagarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Cierre c = new Cierre();
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtTotalPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPagarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPagarActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        JOptionPane.showMessageDialog(null, "Algun campo esta vacio");
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+      
+    }//GEN-LAST:event_formKeyReleased
+
+    private void formInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formInputMethodTextChanged
+      
+    }//GEN-LAST:event_formInputMethodTextChanged
 
     /**
      * @param args the command line arguments

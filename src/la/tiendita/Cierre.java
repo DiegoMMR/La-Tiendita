@@ -1,5 +1,6 @@
 package la.tiendita;
 
+import src.Factura;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,6 +64,18 @@ public class Cierre extends javax.swing.JFrame {
             Integer.toString(f.getCantidad()), Float.toString(f.getPrecioIndividual()),
             f.getNombreCliente(), f.getNit(),Float.toString(f.getTotalVenta())});
         }
+        
+        double dinero = 0;
+        
+        for (int i = 0; i < jTableEfectivo.getRowCount(); i++) {
+                dinero += Double.parseDouble(jTableEfectivo.getValueAt(i, 5).toString());
+            }
+        
+        for (int i = 0; i < jTableCheque.getRowCount(); i++) {
+                dinero += Double.parseDouble(jTableCheque.getValueAt(i, 5).toString());
+            }
+        
+        txtDinero.setText(String.valueOf(dinero));
     }
 
     /**
@@ -84,6 +97,7 @@ public class Cierre extends javax.swing.JFrame {
         jTableCheque = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCredito = new javax.swing.JTable();
+        txtDinero = new javax.swing.JLabel();
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel8.setText("Cierre de caja");
@@ -139,6 +153,9 @@ public class Cierre extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Credito", jScrollPane2);
 
+        txtDinero.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDinero.setText("\"Aca va el Dinero\"");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,7 +165,9 @@ public class Cierre extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(lblTotal)
-                .addGap(136, 136, 136))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtDinero)
+                .addGap(112, 112, 112))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -169,7 +188,8 @@ public class Cierre extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -221,6 +241,7 @@ public class Cierre extends javax.swing.JFrame {
     private javax.swing.JTable jTableCredito;
     private javax.swing.JTable jTableEfectivo;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel txtDinero;
     private javax.swing.JScrollPane txtTabla;
     // End of variables declaration//GEN-END:variables
 }
