@@ -257,7 +257,9 @@ public class Pago extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioCheque))
+                                .addComponent(jRadioCheque)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioCredito))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -265,10 +267,7 @@ public class Pago extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(70, 70, 70)
-                                .addComponent(jRadioCredito))))
+                            .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel8))
@@ -417,7 +416,11 @@ public class Pago extends javax.swing.JFrame {
         txtPrecioIndividual.setText(null);
         txtCliente.setText(null);
         txtNit.setText("C/F");
-        txtTotalPagar.setText(null);        
+        txtTotalPagar.setText(null);
+        jRadioEfectivo.setSelected(false);
+        jRadioCheque.setSelected(false);
+        jRadioCredito.setSelected(false);
+        
     }
     
     private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
