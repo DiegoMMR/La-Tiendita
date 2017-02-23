@@ -5,58 +5,112 @@
  */
 package src;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 /**
  *
- * @author dieez
+ * @author inmer
  */
 public class Factura {
     
-    public String nit;
-    public String nombre;
-    public Date fecha;
-    public int cheque;
-    public int credito;
-    public int efectivo;
-    
-    public Factura() {
-    }
+    private String nombreProducto;
+    private int cantidad;
+    private float precioIndividual;
+    private String nombreCliente;
+    private String nit;
+    private float totalVenta;
 
-    public Factura(String nit, String nombre, Date fecha, int cheque, int credito, int efectivo) {
+    public Factura(String nombreProducto, int cantidad, float precioIndividual, 
+            String nombreCliente, String nit, float totalVenta) {
+        this.nombreProducto = nombreProducto;
+        this.cantidad = cantidad;
+        this.precioIndividual = precioIndividual;
+        this.nombreCliente = nombreCliente;
         this.nit = nit;
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.cheque = cheque;
-        this.credito = credito;
-        this.efectivo = efectivo;
+        this.totalVenta = totalVenta;
     }
 
-    public String getNit() {return nit;}
-    public void setNit(String nit) {this.nit = nit;}
-
-    public String getNombre() {return nombre;}
-    public void setNombre(String nombre) {this.nombre = nombre;}
-
-    public Date getFecha() {return fecha;}
-    public void setFecha(Date fecha) {this.fecha = fecha;}
-
-    public int getCheque() {return cheque;}
-    public void setCheque(int cheque) {this.cheque = cheque;}
-
-    public int getCredito() {return credito;}
-    public void setCredito(int credito) {this.credito = credito;}
-
-    public int getEfectivo() {return efectivo;}
-    public void setEfectivo(int efectivo) {this.efectivo = efectivo;}
-
     
-    public void nuevaFactura(ArrayList<Factura> arFactura, Factura oFactura){
-        
-        arFactura.add(oFactura);
-        
+    /**
+     * @return the nombreProducto
+     */
+    public String getNombreProducto() {
+        return nombreProducto;
     }
-    
-    
+
+    /**
+     * @param nombreProducto the nombreProducto to set
+     */
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * @param cantidad the cantidad to set
+     */
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the precioIndividual
+     */
+    public float getPrecioIndividual() {
+        return precioIndividual;
+    }
+
+    /**
+     * @param precioIndividual the precioIndividual to set
+     */
+    public void setPrecioIndividual(int precioIndividual) {
+        this.precioIndividual = precioIndividual;
+    }
+
+    /**
+     * @return the nombreCliente
+     */
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    /**
+     * @param nombreCliente the nombreCliente to set
+     */
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    /**
+     * @return the nit
+     */
+    public String getNit() {
+        return nit;
+    }
+
+    /**
+     * @param nit the nit to set
+     */
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    /**
+     * @return the totalVenta
+     */
+    public float getTotalVenta() {
+        return totalVenta;
+    }
+
+    /**
+     * @param totalVenta the totalVenta to set
+     */
+    public void setTotalVenta(int totalVenta) {
+        this.totalVenta = totalVenta;
+    }
+
 }
