@@ -413,11 +413,11 @@ public class Pago extends javax.swing.JFrame {
         
         txtNombreProducto.setText(null);
         txtFecha.setDate(null);
-        txtCantidad.setText("0");
-        txtPrecioIndividual.setText("0");
+        txtCantidad.setText(null);
+        txtPrecioIndividual.setText(null);
         txtCliente.setText(null);
         txtNit.setText("C/F");
-        txtTotalPagar.setText("0");        
+        txtTotalPagar.setText(null);        
     }
     
     private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
